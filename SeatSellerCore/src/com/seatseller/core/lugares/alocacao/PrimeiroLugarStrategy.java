@@ -14,8 +14,13 @@ public class PrimeiroLugarStrategy implements IEncontrarLugarStrategy {
 
 	public Optional<Lugar> getLugar(Grelha g, TipoDeLugar tp, LocalDate d, LocalTime t) {
 		ArrayList<Lugar> lg = g.getLugares();
-		Lugar teste = lg.get(0);
-		return Optional.ofNullable(teste);
+		
+		for(int i = 0; i< lg.size(); i++) {
+			Lugar teste = lg.get(i);
+			if(teste.disponivel(d, t) && (teste.getDesignacaoTipo().equals(tp.getDesig()))) 
+				return Optional.ofNullable(teste);
+			
+		}
+		return Optional.empty();
 	}
-
 }

@@ -20,7 +20,7 @@ public class LugarMaisAfastadoStrategy implements IEncontrarLugarStrategy {
 		int maxIndex = 0;
 		Lugar x, y;
 		// Math.sqrt(Math.pow(p1.x - p2.x, 2.0) + Math.pow(p1.y - p2.y, 2.0))
-		//Cria lista de lugares indisponíveis para realizar cálculos posteriormente.
+		//Cria lista de lugares indisponï¿½veis para realizar cï¿½lculos posteriormente.
 
 		for(int i = 0; i<cache.size(); i++) {
 			if(!cache.get(i).disponivel(d, t)) {
@@ -30,7 +30,7 @@ public class LugarMaisAfastadoStrategy implements IEncontrarLugarStrategy {
 				x = cache.get(j);
 				y = all.get(j);
 				distComp = Math.sqrt(Math.pow(x.getLarg() - y.getLarg(), 2) + Math.pow(x.getAlt() - y.getAlt(), 2));
-				if (distComp > dist) {
+				if (distComp > dist && (tp.getDesig().equals(x.getDesignacaoTipo()))) {
 					dist = distComp;
 					maxIndex = j;
 				}

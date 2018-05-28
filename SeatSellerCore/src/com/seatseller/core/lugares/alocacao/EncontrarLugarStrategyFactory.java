@@ -25,14 +25,16 @@ public class EncontrarLugarStrategyFactory  {
 	}
 	
 	public Optional<Lugar> getLugar(Grelha g, TipoDeLugar tp, LocalDate d, LocalTime t) {
-		String estrategia = null;
-		estrategia = getEncontrarLugarStrategy();
+		String strat =  getEncontrarLugarStrategy();
+		String estrategia = strat.substring(strat.indexOf("alocacao.")+9);
+		
 		
 		Optional<Lugar> lg;
 		switch(estrategia) {
-		case "PrimeiroLugarStrategy": lg = pls.getLugar(g, tp, d, t);
-		case "LugarMaisAfastadoStrategy": lg = lmas.getLugar(g,tp,d,t);
-		default: lg = las.getLugar(g, tp, d, t);
+		case "PrimeiroLugarStrategy": lg = pls.getLugar(g, tp, d, t); 
+		case "LugarMaisAfastadoStrategy": lg = lmas.getLugar(g,tp,d,t); 
+		default: lg = las.getLugar(g, tp, d, t); break;
+		
 		}
 		
 		return lg;

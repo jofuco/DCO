@@ -18,15 +18,19 @@ public class LugarAleatorioStrategy implements IEncontrarLugarStrategy {
 
 	}
 
-	
+
 	public Optional<Lugar> getLugar(Grelha g, TipoDeLugar tp, LocalDate d, LocalTime t) {
 		ArrayList<Lugar> lg = g.getLugares();
+		
 
 		Random r = new Random();
+		for(int i = 0; i<lg.size(); i++) {
+			Lugar teste = lg.get(r.nextInt((lg.size() - 0) + 1) + 0);
+			if(teste.disponivel(d, t) && (tp.getDesig().equals(teste.getDesignacaoTipo()))) 
+				return Optional.ofNullable(teste);
+			
+		}
+		return Optional.empty();
 
-		Lugar teste = lg.get(r.nextInt((lg.size() - 0) + 1) + 0);
-		return Optional.ofNullable(teste);
 	}
-
-
 }
